@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
+    canvas.width = 705;
+    canvas.height = 706;
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -41,6 +41,7 @@ var Engine = (function(global) {
          */
         var now = Date.now(),
             dt = (now - lastTime) / 1000.0;
+
 
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
@@ -67,6 +68,9 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+        document.getElementById('play-again').addEventListener('click', function() {
+        reset();
+    });
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -95,6 +99,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
+      
     }
 
     /* This function initially draws the "game level", it will then call
@@ -112,11 +117,12 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
+                'images/stone-block.png',
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
-            numRows = 6,
-            numCols = 5,
+            numRows = 7,
+            numCols = 7,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -152,7 +158,50 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+allGems.forEach(function(gem) {
+            gem.render();     
+        });
+
+        /* Render stats
+         * Renders the stat panel and containing elements at top of canvas
+         */
+       // stats.render();
+
     }
+function checkCollisions() {
+
+            /**
+            * Check for the collision of two entities.
+            * Function accepts two arguments.
+            */
+            function collision(a, b) {
+              return a.x < b.x + b.width &&
+                     a.x + a.width > b.x &&
+                     a.y < b.y + b.height &&
+                     a.y + a.height > b.y;
+            }
+/* Check gem collisions. 
+         * If there is a collision, call the gem.clear() method to 
+         * clear the gem from the canvas and call the stats.updateGems 
+         * to update the gems count and increase the score by 300 points.
+         */
+        allGems.forEach(function(gem) {
+            if(collision(player, gem)) {
+
+                    gem.clear();
+
+                    stats.updateGems();
+
+            }
+        });
+        /* Check goal collisions. 
+         * If the player gets to the other side, call the updateLevel() function.
+         */
+       
+
+    }
+   
 
     /* This function does nothing but it could have been a good place to
      * handle game reset states - maybe a new game menu or a game over screen
@@ -160,6 +209,9 @@ var Engine = (function(global) {
      */
     function reset() {
         // noop
+        //closing the game over window
+    document.getElementById('game-over').style.display = 'none';
+    document.getElementById('game-over-overlay').style.display = 'none';
     }
 
     /* Go ahead and load all of the images we know we're going to need to
@@ -171,7 +223,12 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-pink-girl.png',
+        'images/Gem-Blue.png',
+        'images/Gem-Green.png',
+        'images/Gem-Orange.png',
+        'images/Star.png'
     ]);
     Resources.onReady(init);
 

@@ -1,3 +1,70 @@
 body {
     text-align: center;
 }
+#game-over, #game-over-overlay {
+    margin: auto;
+    width: 480px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+}
+
+#game-over-overlay {
+    background-color: black;
+    opacity: .5;
+}
+
+#game-over {
+    height: 200px;
+    text-align: center;
+    color: yellow;
+}
+
+#game-over h1 {
+    font-size: 3em;
+    font-family: sans-serif;
+}
+
+#game-over button {
+    font-size: 1.5em;
+}
+.canvas-width {
+	
+	width: 700px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	/*border: 1px solid red !important;
+	background-color: silver;
+    opacity: .10;*/
+}
+.lives {
+	font-size: 2em;	
+	font-weight: bold;
+	color: blue;
+	text-shadow: 2px 2px 6px black;	
+	width: 30%;
+	display: inline-block;
+}
+
+.level {
+	font-size: 2em;
+	font-weight: bold;
+	color: blue;
+	text-shadow: 2px 2px 6px black;	
+	width: 30%;
+	display: inline-block;
+}
+
+.score {
+	font-size: 2em;
+	font-weight: bold;
+	color: blue;
+	text-shadow: 2px 2px 6px black;	
+	width: 30%;
+	display: inline-block;
+}

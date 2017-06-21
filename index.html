@@ -5,7 +5,19 @@
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body background="images/background.jpg">
+<div class="canvas-width">
+			<span class="lives">Lives: 3</span>
+			<span class="level">Level: 1</span>
+			<span class="score">Score: 0</span>
+		</div>
+ <div id="game-over-overlay">
+ </div>
+
+    <div id="game-over">
+      <h1>GAME OVER</h1>
+      <button id="play-again">Play Again</button>
+    </div>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
