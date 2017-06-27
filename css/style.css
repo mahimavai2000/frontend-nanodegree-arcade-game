@@ -1,10 +1,13 @@
 body {
     text-align: center;
 }
-#game-over, #game-over-overlay {
+#game-over,
+#game-over-overlay,
+#game-own,
+#game-own-overlay {
     margin: auto;
     width: 480px;
-    height: 200px;
+    height: 280px;
     position: absolute;
     top: 0;
     left: 0;
@@ -13,58 +16,50 @@ body {
     z-index: 1;
     display: none;
 }
-
-#game-over-overlay {
+#game-over-overlay,
+#game-own-overlay {
     background-color: black;
     opacity: .5;
-}
-
-#game-over {
+} 
+#game-over,
+#game-own {
     height: 200px;
     text-align: center;
     color: yellow;
 }
-
 #game-over h1 {
     font-size: 3em;
     font-family: sans-serif;
 }
-
-#game-over button {
+.finalScore,
+.gameownfinalScore {
+    text-align: center;
+    color: orange;
+}
+#game-over h2,
+#game-own h2 {
+    font-size: 2em;
+    font-family: sans-serif;
+}
+#game-over button,
+#game-own button {
     font-size: 1.5em;
 }
 .canvas-width {
-	
-	width: 700px;
-	margin: 0 auto;
-	box-sizing: border-box;
-	/*border: 1px solid red !important;
+    width: 700px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    /*border: 1px solid red !important;
 	background-color: silver;
     opacity: .10;*/
 }
-.lives {
-	font-size: 2em;	
-	font-weight: bold;
-	color: blue;
-	text-shadow: 2px 2px 6px black;	
-	width: 30%;
-	display: inline-block;
-}
-
-.level {
-	font-size: 2em;
-	font-weight: bold;
-	color: blue;
-	text-shadow: 2px 2px 6px black;	
-	width: 30%;
-	display: inline-block;
-}
-
+.lives,
+.level,
 .score {
-	font-size: 2em;
-	font-weight: bold;
-	color: blue;
-	text-shadow: 2px 2px 6px black;	
-	width: 30%;
-	display: inline-block;
+    font-size: 2em;
+    font-weight: bold;
+    color: yellow;
+    text-shadow: 2px 2px 6px black;
+    width: 30%;
+    display: inline-block;
 }

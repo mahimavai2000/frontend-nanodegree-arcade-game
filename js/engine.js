@@ -46,9 +46,11 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
+         //Pause the game 
+         if (go) {
         update(dt);
         render();
-
+}
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -68,7 +70,14 @@ var Engine = (function(global) {
         reset();
         lastTime = Date.now();
         main();
+        //Start the game when play again button clicked in Game over Window
         document.getElementById('play-again').addEventListener('click', function() {
+        go=true;    
+        reset();
+    });
+        //Start the game when play again button clicked in Game own Window
+        document.getElementById('play-again1').addEventListener('click', function() {
+        go=true;    
         reset();
     });
     }
@@ -117,7 +126,7 @@ var Engine = (function(global) {
                 'images/stone-block.png',   // Row 1 of 3 of stone
                 'images/stone-block.png',   // Row 2 of 3 of stone
                 'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/stone-block.png',
+                'images/stone-block.png',   // Row 4 of 4 of stone
                 'images/grass-block.png',   // Row 1 of 2 of grass
                 'images/grass-block.png'    // Row 2 of 2 of grass
             ],
@@ -159,49 +168,11 @@ var Engine = (function(global) {
 
         player.render();
 
-allGems.forEach(function(gem) {
+        allGems.forEach(function(gem) {
             gem.render();     
         });
 
-        /* Render stats
-         * Renders the stat panel and containing elements at top of canvas
-         */
-       // stats.render();
-
     }
-function checkCollisions() {
-
-            /**
-            * Check for the collision of two entities.
-            * Function accepts two arguments.
-            */
-            function collision(a, b) {
-              return a.x < b.x + b.width &&
-                     a.x + a.width > b.x &&
-                     a.y < b.y + b.height &&
-                     a.y + a.height > b.y;
-            }
-/* Check gem collisions. 
-         * If there is a collision, call the gem.clear() method to 
-         * clear the gem from the canvas and call the stats.updateGems 
-         * to update the gems count and increase the score by 300 points.
-         */
-        allGems.forEach(function(gem) {
-            if(collision(player, gem)) {
-
-                    gem.clear();
-
-                    stats.updateGems();
-
-            }
-        });
-        /* Check goal collisions. 
-         * If the player gets to the other side, call the updateLevel() function.
-         */
-       
-
-    }
-   
 
     /* This function does nothing but it could have been a good place to
      * handle game reset states - maybe a new game menu or a game over screen
@@ -209,9 +180,11 @@ function checkCollisions() {
      */
     function reset() {
         // noop
-        //closing the game over window
+        //closing the game over and Game own  window
     document.getElementById('game-over').style.display = 'none';
     document.getElementById('game-over-overlay').style.display = 'none';
+    document.getElementById('game-own').style.display = 'none';
+    document.getElementById('game-own-overlay').style.display = 'none';
     }
 
     /* Go ahead and load all of the images we know we're going to need to
