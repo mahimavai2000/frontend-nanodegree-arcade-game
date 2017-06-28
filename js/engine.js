@@ -13,7 +13,6 @@
  * the canvas' context (ctx) object globally available to make writing app.js
  * a little simpler to work with.
  */
-
 var Engine = (function(global) {
     /* Predefine the variables we'll be using within this scope,
      * create the canvas element, grab the 2D context for that canvas
@@ -46,11 +45,11 @@ var Engine = (function(global) {
         /* Call our update/render functions, pass along the time delta to
          * our update function since it may be used for smooth animation.
          */
-         //Pause the game 
-         if (go) {
-        update(dt);
-        render();
-}
+        //Pause the game 
+        if (go) {
+            update(dt);
+            render();
+        }
         /* Set our lastTime variable which is used to determine the time delta
          * for the next time this function is called.
          */
@@ -72,14 +71,14 @@ var Engine = (function(global) {
         main();
         //Start the game when play again button clicked in Game over Window
         document.getElementById('play-again').addEventListener('click', function() {
-        go=true;    
-        reset();
-    });
+            go = true;
+            reset();
+        });
         //Start the game when play again button clicked in Game own Window
         document.getElementById('play-again1').addEventListener('click', function() {
-        go=true;    
-        reset();
-    });
+            go = true;
+            reset();
+        });
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -108,7 +107,7 @@ var Engine = (function(global) {
             enemy.update(dt);
         });
         player.update();
-      
+
     }
 
     /* This function initially draws the "game level", it will then call
@@ -122,13 +121,13 @@ var Engine = (function(global) {
          * for that particular row of the game level.
          */
         var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/stone-block.png',   // Row 4 of 4 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+                'images/water-block.png', // Top row is water
+                'images/stone-block.png', // Row 1 of 3 of stone
+                'images/stone-block.png', // Row 2 of 3 of stone
+                'images/stone-block.png', // Row 3 of 3 of stone
+                'images/stone-block.png', // Row 4 of 4 of stone
+                'images/grass-block.png', // Row 1 of 2 of grass
+                'images/grass-block.png' // Row 2 of 2 of grass
             ],
             numRows = 7,
             numCols = 7,
@@ -169,7 +168,7 @@ var Engine = (function(global) {
         player.render();
 
         allGems.forEach(function(gem) {
-            gem.render();     
+            gem.render();
         });
 
     }
@@ -181,10 +180,10 @@ var Engine = (function(global) {
     function reset() {
         // noop
         //closing the game over and Game own  window
-    document.getElementById('game-over').style.display = 'none';
-    document.getElementById('game-over-overlay').style.display = 'none';
-    document.getElementById('game-own').style.display = 'none';
-    document.getElementById('game-own-overlay').style.display = 'none';
+        document.getElementById('game-over').style.display = 'none';
+        document.getElementById('game-over-overlay').style.display = 'none';
+        document.getElementById('game-own').style.display = 'none';
+        document.getElementById('game-own-overlay').style.display = 'none';
     }
 
     /* Go ahead and load all of the images we know we're going to need to

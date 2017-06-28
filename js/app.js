@@ -28,13 +28,13 @@ var Enemy = function(x, y, speed) {
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt, player) {
+Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
     // Update all the enemies  
     this.x = this.x + (this.speed * dt);
-    if (this.x > 480) {
+    if (this.x > 600) {
         this.x = 0;
     }
     return this.x;
@@ -185,11 +185,11 @@ Player.prototype.Reset = function() {
 Player.prototype.gameOver = function() {
     if (lives === 0) {
         go = false; //pause the enemies  
-        document.getElementById('game-over').style.display = 'block';          
+        document.getElementById('game-over').style.display = 'block';
         document.getElementsByClassName('finalScore')[0].innerHTML = 'Final Score: ' + score;
         document.getElementById('game-over-overlay').style.display = 'block';
         this.Reset();
-        this.resetScore();        
+        this.resetScore();
         gem.reset();
     }
 };
@@ -253,7 +253,7 @@ Player.prototype.resetScore = function() {
 //Display Game Own window
 Player.prototype.gameOwn = function() {
     if (gameOwnState) {
-        level = 5;           
+        level = 5;
         gameOwnState = false;
         go = false; //pause the enemies 
         this.Reset(); //reset the player      

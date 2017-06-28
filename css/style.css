@@ -1,6 +1,8 @@
 body {
+	background-image: url(../images/background.jpg);
     text-align: center;
 }
+
 #game-over,
 #game-over-overlay,
 #game-own,
@@ -16,35 +18,42 @@ body {
     z-index: 1;
     display: none;
 }
+
 #game-over-overlay,
 #game-own-overlay {
     background-color: black;
     opacity: .5;
 } 
+
 #game-over,
 #game-own {
     height: 200px;
     text-align: center;
     color: yellow;
 }
+
 #game-over h1 {
     font-size: 3em;
     font-family: sans-serif;
 }
+
 .finalScore,
 .gameownfinalScore {
     text-align: center;
     color: orange;
 }
+
 #game-over h2,
 #game-own h2 {
     font-size: 2em;
     font-family: sans-serif;
 }
+
 #game-over button,
 #game-own button {
     font-size: 1.5em;
 }
+
 .canvas-width {
     width: 700px;
     margin: 0 auto;
@@ -53,6 +62,7 @@ body {
 	background-color: silver;
     opacity: .10;*/
 }
+
 .lives,
 .level,
 .score {
